@@ -128,6 +128,8 @@ SELECT
     DENSE_RANK() OVER (ORDER BY SUM(total_amount) DESC) as dense_sales_rank
 FROM transactions
 GROUP BY DATE_FORMAT(trans_date, '%Y-%m');
+<img width="979" height="532" alt="image" src="https://github.com/user-attachments/assets/2dbbdeb6-1f38-4dba-ad5c-ee1d007f068e" />
+
 
 
  ## Rank payment methods by usage
@@ -140,6 +142,8 @@ SELECT
 FROM transactions t
 JOIN transaction_type tt ON t.type_id = tt.type_id
 GROUP BY type_name;
+<img width="979" height="523" alt="image" src="https://github.com/user-attachments/assets/74e44b2f-4a5c-4be8-97f4-55394116bd08" />
+
 
 
  ## this query shows the customers who visits our supermarket many times
@@ -153,6 +157,8 @@ FROM customers c
 JOIN transactions t ON c.customer_id = t.customer_id
 GROUP BY customer_name;
 
+<img width="979" height="543" alt="image" src="https://github.com/user-attachments/assets/332d91a8-8956-49cc-a253-e2a49a8f6ee2" />
+
 
 ## this query shows the total amount that is spent every day
 
@@ -163,6 +169,9 @@ SELECT
 FROM transactions
 GROUP BY trans_date
 ORDER BY trans_date;
+
+<img width="979" height="529" alt="image" src="https://github.com/user-attachments/assets/6d3fd8a1-42a8-4ae6-8cbf-0b0d474e2443" />
+
 
 
  ## this query Calculates 3-day moving average of sales
@@ -175,6 +184,9 @@ FROM transactions
 GROUP BY trans_date
 ORDER BY trans_date;
 
+<img width="979" height="535" alt="image" src="https://github.com/user-attachments/assets/f5499f1c-b4fe-4bbf-bd58-76473a126b74" />
+
+
 ## Find min and max sales values per product
 
 SELECT 
@@ -186,6 +198,7 @@ FROM transactions t
 JOIN products p ON t.product_id = p.product_id
 GROUP BY product_name;
 
+<img width="979" height="535" alt="image" src="https://github.com/user-attachments/assets/b6d8dcc6-d933-4550-97e5-d5b2d196e134" />
 
 
  ## Compare ROWS vs RANGE framing
@@ -199,6 +212,9 @@ SELECT
 FROM transactions
 GROUP BY DATE_FORMAT(trans_date, '%Y-%m');
 
+<img width="979" height="528" alt="image" src="https://github.com/user-attachments/assets/d0fcedae-2ce5-4667-a9e1-71fc5b334c95" />
+
+
 
   ## this query calculates the Cumulative average spending per customer
 
@@ -211,6 +227,7 @@ FROM transactions t
 JOIN customers c ON t.customer_id = c.customer_id
 ORDER BY customer_name, trans_date;
 
+<img width="979" height="522" alt="image" src="https://github.com/user-attachments/assets/5510bd51-6654-49c3-9b68-d1c1c02a8a32" />
 
 
  ## Calculate monthly growth percentage
@@ -230,6 +247,9 @@ SELECT
     ROUND(((sales - LAG(sales, 1) OVER (ORDER BY month)) / LAG(sales, 1) OVER (ORDER BY month)) * 100, 2) as growth_pct
 FROM monthly_sales;
 
+<img width="979" height="529" alt="image" src="https://github.com/user-attachments/assets/5e255512-70f2-4348-920e-e5d59300b12f" />
+
+
 
  ## in this query are Finding  next purchase date for each customer
 
@@ -241,6 +261,9 @@ SELECT
 FROM transactions t
 JOIN customers c ON t.customer_id = c.customer_id
 ORDER BY customer_name, trans_date;
+
+<img width="979" height="522" alt="image" src="https://github.com/user-attachments/assets/9c51f501-05f2-410a-adda-4e45594f7f75" />
+
 
 
 ## this query we are finding each day's sales with previous day
@@ -254,6 +277,9 @@ SELECT
 FROM transactions
 GROUP BY trans_date
 ORDER BY trans_date;
+
+<img width="979" height="539" alt="image" src="https://github.com/user-attachments/assets/e4f0f8e5-2de6-42dc-99ac-322f38747806" />
+
 
  ## Analyze product sales trend with lead/lag
 
@@ -269,6 +295,8 @@ JOIN products p ON t.product_id = p.product_id
 ORDER BY product_name, trans_date;
 
 
+
+
  ## Analyze customer spending pattern over time
 
 
@@ -281,6 +309,9 @@ SELECT
 FROM transactions t
 JOIN customers c ON t.customer_id = c.customer_id
 ORDER BY customer_name, trans_date;
+
+<img width="979" height="525" alt="image" src="https://github.com/user-attachments/assets/f0b785c7-3c5f-4b29-a6d9-8b4a479190f4" />
+
 
 
 ## this are Segmenting customers into 4 quartiles using NTILE function
@@ -306,6 +337,8 @@ SELECT
 FROM products p
 JOIN transactions t ON p.product_id = t.product_id
 GROUP BY product_name;
+<img width="979" height="525" alt="image" src="https://github.com/user-attachments/assets/fc75b135-9dca-4efd-a449-02b2042539bf" />
+
 
 
  ## Segment customers by visit frequency
@@ -317,6 +350,8 @@ SELECT
 FROM customers c
 JOIN transactions t ON c.customer_id = t.customer_id
 GROUP BY customer_name;
+
+<img width="979" height="530" alt="image" src="https://github.com/user-attachments/assets/a25bdf4e-824b-4c10-b081-52eaa187fa9f" />
 
 
 
@@ -330,6 +365,9 @@ FROM transactions t
 JOIN transaction_type tt ON t.type_id = tt.type_id
 GROUP BY type_name;
 
+<img width="979" height="532" alt="image" src="https://github.com/user-attachments/assets/294dc890-f2d8-4d65-97b7-9d4e5cdd000f" />
+
+
  ## Segment products by price range
 
 
@@ -339,6 +377,8 @@ SELECT
     NTILE(4) OVER (ORDER BY selling_price) as price_quartile,
     CUME_DIST() OVER (ORDER BY selling_price) as price_percentile
 FROM products;
+
+<img width="979" height="536" alt="image" src="https://github.com/user-attachments/assets/9dcbd418-ee71-4a9f-ab86-5670d6c62bda" />
 
 
 
