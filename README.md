@@ -52,5 +52,7 @@ CREATE TABLE Transactions (
 );
 #  ER Diagram
 
+<img width="979" height="490" alt="image" src="https://github.com/user-attachments/assets/b83b4094-6614-4b2f-a1a1-c672da7a9e2d" />
+
 
 
