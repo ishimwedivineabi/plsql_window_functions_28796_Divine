@@ -53,6 +53,45 @@ CREATE TABLE Transactions (
 #  ER Diagram
 
 <img width="979" height="490" alt="image" src="https://github.com/user-attachments/assets/b83b4094-6614-4b2f-a1a1-c672da7a9e2d" />
+# JOIN queries
+
+SQL
+SELECT 
+    t.transaction_id,
+    c.customer_name,
+    p.prod_name,
+    tt.type_name AS transaction_category,
+    t.trans_date,
+    t.quantity,
+    t.total_amount
+FROM Transactions t
+JOIN customers c ON t.customer_id = c.customer_id
+JOIN products p ON t.product_id = p.product_id
+JOIN Transaction_type tt ON t.type_id = tt.type_id;
+## 2. Sales Summary by Customer
+
+SQL
+SELECT 
+    c.customer_name,
+    COUNT(t.transaction_id) AS total_orders,
+    SUM(t.total_amount) AS lifetime_value
+FROM customers c
+LEFT JOIN Transactions t ON c.customer_id = t.customer_id
+GROUP BY c.customer_name
+ORDER BY lifetime_value DESC;
+## 3. Product Performance 
+
+SQL
+SELECT 
+    p.prod_name,
+    SUM(t.quantity) AS units_sold,
+    SUM(t.total_amount) AS total_revenue,
+    SUM(t.total_amount - (p.unit_cost * t.quantity)) AS estimated_profit
+FROM products p
+JOIN Transactions t ON p.product_id = t.product_id
+GROUP BY p.prod_name;
+# windows Function  queries
+
 
 
 
