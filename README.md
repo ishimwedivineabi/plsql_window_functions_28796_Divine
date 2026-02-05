@@ -380,10 +380,20 @@ FROM products;
 
 <img width="979" height="536" alt="image" src="https://github.com/user-attachments/assets/9dcbd418-ee71-4a9f-ab86-5670d6c62bda" />
 
+## key findings:
+Top 20% of customers generate 65% of total revenueCustomers from Kigali City Center spend the most on average
 
 
+## References
+1.     SQL Window Function by tech TFQ on YouTube
 
+2.     SQL Window Function by sumit Mittal on YouTube
 
+3.     GeeksforGeeks.com (SQL window functions)
+
+## Integrity statement
+
+“All sources were properly cited. Implementations and analysis represent original work. No AI￾generated content was copied without attribution or adaptation.”
 
 
 
